@@ -36,7 +36,7 @@ Resources:
        AllowOrigin: "'*'"
 
   VisitorTable:
-    Type: AWS::Severless::SimpleTable
+    Type: AWS::Serverless::SimpleTable
     Properties:
       PrimaryKey: 
         Name: Key_id
