@@ -13,7 +13,7 @@ Resources:
       RolePath: \
       Policies:
         - S3ReadPolicy:
-            BucketName: !Ref cumuluscompendium
+            BucketName: cumuluscompendium
         - DynamoDBCrudPolicy:
             TableName: !Ref VisitorTable
         - CloudWatchPutMetricPolicy: {}
