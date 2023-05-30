@@ -38,6 +38,7 @@ Resources:
   VisitorTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
+      TableName: VisitorTable
       PrimaryKey: 
         Name: Key_id
         Type: String
