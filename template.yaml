@@ -10,7 +10,7 @@ Resources:
       Runtime: python3.10
       PackageType: Zip
       Handler: lambda_handler
-      RolePath: \
+      RolePath: /
       Policies:
         - S3ReadPolicy:
             BucketName: cumuluscompendium
