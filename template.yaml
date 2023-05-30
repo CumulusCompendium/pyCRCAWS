@@ -12,11 +12,10 @@ Resources:
    Handler: lambda_handler
    RolePath: \
    Policies:
-    -S3ReadPolicy:
+    - S3ReadPolicy:
     BucketName: !Ref cumuluscompendium
-    -DynamoDBCrudPolicy:
+    - DynamoDBCrudPolicy:
     TableName: !Ref VisitorTable 
-    - CloudWatchPutMetricPolicy: {}
    Events:
     VisitorGetAPI:
     Type: Api
