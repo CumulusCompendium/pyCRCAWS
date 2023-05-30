@@ -24,7 +24,7 @@ Resources:
             Method: get
             Path: /path
             RestApiId:
-            Ref: VisitorGetAPI
+              Ref: VisitorGetAPI
 
   VisitorGetAPI:
     Type: AWS::Serverless::Api
