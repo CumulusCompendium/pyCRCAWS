@@ -26,18 +26,18 @@ Resources:
             RestApiId:
             Ref: VisitorGetAPI
 
-VisitorGetAPI:
-  Type: AWS::Serverless::Api
-  Properties:
-    StageName: Prod
-    Cors:
-     AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-     AllowMethods: "'GET,OPTIONS'"
-     AllowOrigin: "'*'"
+  VisitorGetAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Cors:
+       AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+       AllowMethods: "'GET,OPTIONS'"
+       AllowOrigin: "'*'"
 
-VisitorTable:
-  Type: AWS::Severless::SimpleTable
-  Properties:
-    PrimaryKey: 
-      Name: Key_id
-      Type: String
+  VisitorTable:
+    Type: AWS::Severless::SimpleTable
+    Properties:
+      PrimaryKey: 
+        Name: Key_id
+        Type: String
