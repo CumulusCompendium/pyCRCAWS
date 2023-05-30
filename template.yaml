@@ -13,9 +13,10 @@ Resources:
    RolePath: \
    Policies:
     - S3ReadPolicy:
-    BucketName: !Ref cumuluscompendium
+       BucketName: !Ref cumuluscompendium
     - DynamoDBCrudPolicy:
-    TableName: !Ref VisitorTable 
+       TableName: !Ref VisitorTable
+    - CloudWatchPutMetricPolicy: {}
    Events:
     VisitorGetAPI:
     Type: Api
@@ -38,5 +39,5 @@ VisitorTable:
  Type: AWS::Severless::SimpleTable
  Properties:
   PrimaryKey: 
-  Name: Key_id
-  Type: String
+   Name: Key_id
+   Type: String
