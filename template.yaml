@@ -2,42 +2,42 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 
 Resources:
- VisitorGetFunction:
-  Type: AWS::Serverless::Function
-  Properties:
-   FunctionName: visitorGet
-   CodeUri: s3://cumuluscompendium/getVisitor.zip
-   Runtime: python3.10
-   PackageType: Zip
-   Handler: lambda_handler
-   RolePath: \
-   Policies:
-    - S3ReadPolicy:
-       BucketName: !Ref cumuluscompendium
-    - DynamoDBCrudPolicy:
-       TableName: !Ref VisitorTable
-    - CloudWatchPutMetricPolicy: {}
-   Events:
-    VisitorGetAPI:
-    Type: Api
+  VisitorGetFunction:
+    Type: AWS::Serverless::Function
     Properties:
-    Method: get
-    Path: /path
-    RestApiId:
-    Ref: VisitorGetAPI
+      FunctionName: visitorGet
+      CodeUri: s3://cumuluscompendium/getVisitor.zip
+      Runtime: python3.10
+      PackageType: Zip
+      Handler: lambda_handler
+      RolePath: \
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref cumuluscompendium
+        - DynamoDBCrudPolicy:
+            TableName: !Ref VisitorTable
+        - CloudWatchPutMetricPolicy: {}
+      Events:
+        VisitorGetAPI:
+          Type: Api
+          Properties:
+            Method: get
+            Path: /path
+            RestApiId:
+            Ref: VisitorGetAPI
 
 VisitorGetAPI:
- Type: AWS::Serverless::Api
- Properties:
-  StageName: Prod
-  Cors:
-   AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-   AllowMethods: "'GET,OPTIONS'"
-   AllowOrigin: "'*'"
+  Type: AWS::Serverless::Api
+  Properties:
+    StageName: Prod
+    Cors:
+     AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+     AllowMethods: "'GET,OPTIONS'"
+     AllowOrigin: "'*'"
 
 VisitorTable:
- Type: AWS::Severless::SimpleTable
- Properties:
-  PrimaryKey: 
-   Name: Key_id
-   Type: String
+  Type: AWS::Severless::SimpleTable
+  Properties:
+    PrimaryKey: 
+      Name: Key_id
+      Type: String
