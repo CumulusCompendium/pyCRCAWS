@@ -9,7 +9,7 @@ Resources:
       CodeUri: s3://cumuluscompendium/getVisitor.zip
       Runtime: python3.10
       PackageType: Zip
-      Handler: lambda_handler
+      Handler: getVisitor.lambda_handler
       RolePath: /
       Policies:
         - S3ReadPolicy:
