@@ -1,6 +1,6 @@
 import json
 import boto3 
-#--------------------------------------------imports json and boto3 modules
+#--------------------------------------------imports json and boto3 modules 
 dynamodb = boto3.resource('dynamodb') 
 #--------------------------------------------grabs DynamoDb context
 table = dynamodb.Table('VisitorTable') 
