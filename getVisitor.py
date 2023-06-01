@@ -36,6 +36,6 @@ def lambda_handler(event, context):
         "headers": {'Access-Control-Allow-Origin': '*'},
         "body": {'count': visitor_count},
         "isBase64Encoded": 'false'
-    } 
-      return response
+    }
+  return response
   #-------------------------------------------return the visitor_count to be handled by JS
