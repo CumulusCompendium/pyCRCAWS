@@ -15,7 +15,13 @@ def lambda_handler(event, context):
       print("null")
       visitor_count = 1
       table.put_item(Item={'Key_id':'0', 'visitor_count':visitor_count})
-      return visitor_count
+      response = {
+        "statusCode": 200,
+        "headers": {'Access-Control-Allow-Origin': '*'},
+        "body": 'visitor_count',
+        "isBase64Encoded": 'false'
+    } 
+      return response
   else:
       print("full")
   #-------------------------------------------if response has an item, save to visitor_count, iterate by 1, and update the record
@@ -25,5 +31,11 @@ def lambda_handler(event, context):
   #-------------------------------------------increment the visitor_count to reflect current page load
   response = table.put_item(Item={'Key_id':'0', 'visitor_count':visitor_count})
   #-------------------------------------------update Ddb with new visitor_count value
-  return visitor_count
+  response = {
+        "statusCode": 200,
+        "headers": {'Access-Control-Allow-Origin': '*'},
+        "body": 'visitor_count',
+        "isBase64Encoded": 'false'
+    } 
+      return response
   #-------------------------------------------return the visitor_count to be handled by JS
