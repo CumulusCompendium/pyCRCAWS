@@ -18,7 +18,7 @@ def lambda_handler(event, context):
       response = {
         "statusCode": 200,
         "headers": {'Access-Control-Allow-Origin': '*'},
-        "body": 'visitor_count',
+        "body": {'count': visitor_count},
         "isBase64Encoded": 'false'
     } 
       return response
@@ -34,7 +34,7 @@ def lambda_handler(event, context):
   response = {
         "statusCode": 200,
         "headers": {'Access-Control-Allow-Origin': '*'},
-        "body": 'visitor_count',
+        "body": {'count': visitor_count},
         "isBase64Encoded": 'false'
     } 
       return response
