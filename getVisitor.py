@@ -18,7 +18,7 @@ def lambda_handler(event, context):
       response = {
         "statusCode": 200,
         "headers": {'Access-Control-Allow-Origin': '*'},
-        "body": {'count': visitor_count},
+        "body": visitor_count,
         "isBase64Encoded": 'false'
     } 
       return response
@@ -31,10 +31,12 @@ def lambda_handler(event, context):
   #-------------------------------------------increment the visitor_count to reflect current page load
   response = table.put_item(Item={'Key_id':'0', 'visitor_count':visitor_count})
   #-------------------------------------------update Ddb with new visitor_count value
+  visitor_count = str(visitor_count)
+  #-------------------------------------------cast vistor_count from decimal to str to be handled by HTTP
   response = {
         "statusCode": 200,
         "headers": {'Access-Control-Allow-Origin': '*'},
-        "body": {'count': visitor_count},
+        "body": visitor_count,
         "isBase64Encoded": 'false'
     }
   return response
