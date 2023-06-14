@@ -6,7 +6,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: visitorGet
-      CodeUri: getVisitor.zip
+      CodeUri: artifact/getVisitor.zip
       Runtime: python3.10
       PackageType: Zip
       Handler: getVisitor.lambda_handler
