@@ -12,6 +12,7 @@ jobs:
           files: getVisitor.py
           dest: getVisitor.zip
       - run: realpath getVisitor.zip
+      - run: ls -laR .
   deploy:
     needs: python_zip
     runs-on: ubuntu-latest
