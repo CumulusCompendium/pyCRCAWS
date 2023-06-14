@@ -3,7 +3,17 @@ on:
     branches:
       - main
 jobs:
+  python_zip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: vimtor/action-zip@v1
+        with:
+          files: getVisitor.py
+          dest: getVisitor.zip
+      - run: realpath getVisitor.zip
   deploy:
+    needs: python_test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
