@@ -6,7 +6,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: visitorGet
-      CodeUri: s3://cumuluscompendium/getVisitor.zip
+      CodeUri: /home/runner/work/pyCRCAWS/pyCRCAWS/getVisitor.zip
       Runtime: python3.10
       PackageType: Zip
       Handler: getVisitor.lambda_handler
