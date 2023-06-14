@@ -3,22 +3,6 @@ on:
     branches:
       - develop
 jobs:
-  python_zip:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: mkdir artifact
-      - run: ls -laR .
-      - uses: vimtor/action-zip@v1
-        with:
-          files: getVisitor.py
-          dest: artifact/getVisitor.zip
-      - uses: actions/upload-artifact@master
-        with:
-          name: getVisitor.py
-          path: artifact/getVisitor.zip
-          retention-days: 1
-      - run: ls -laR .
   deploy:
     needs: python_zip
     runs-on: ubuntu-latest
@@ -31,10 +15,10 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - uses: actions/download-artifact@master
+      - uses: vimtor/action-zip@v1
         with:
-          name: getVisitor.py
-          path: artifact/getVisitor.zip
+          files: getVisitor.py
+          dest: getVisitor.zip
       - run: pwd
       - run: ls -laR .
       - run: sam build --use-container
