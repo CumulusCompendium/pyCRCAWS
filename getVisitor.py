@@ -6,6 +6,7 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('VisitorTable') 
 #--------------------------------------------grabs my Ddb table
 def lambda_handler(event, context): 
+  print("This is for truth and love")
   #------------------------------------------specifies a lambda handler with two arguments
   response = table.get_item(Key={'Key_id':'0'}) 
   #-------------------------------------------grab item by its key id
