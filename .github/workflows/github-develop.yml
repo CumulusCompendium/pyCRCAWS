@@ -7,18 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: pwd
       - run: mkdir artifact
       - run: ls -laR .
+      - uses: vimtor/action-zip@v1
+        with:
+          files: getVisitor.py
+          dest: artifact/getVisitor.zip
       - uses: actions/upload-artifact@master
         with:
           name: python-artifact
           path: /artifact
           retention-days: 1
-      - uses: vimtor/action-zip@v1
-        with:
-          files: getVisitor.py
-          dest: artifact/getVisitor.zip
       - run: realpath getVisitor.zip
       - run: ls -laR .
   deploy:
