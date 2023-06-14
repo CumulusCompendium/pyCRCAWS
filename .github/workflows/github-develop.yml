@@ -26,5 +26,6 @@ jobs:
           aws-region: us-east-1
       - run: realpath template.yaml
       - run: realpath getVisitor.zip
+      - run: ls
       - run: sam build --use-container
       - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
