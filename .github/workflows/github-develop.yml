@@ -16,7 +16,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: python-artifact
-          path: /artifact
+          path: artifact/getVisitor.zip
           retention-days: 1
       - run: realpath getVisitor.zip
       - run: ls -laR .
