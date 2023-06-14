@@ -7,10 +7,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: pwd
+      - run: mkdir artifact
+      - run: ls -laR .
+      - uses: actions/upload-artifact@master
+        with:
+          name: python-artifact
+          path: /artifact
+          retention-days: 1
       - uses: vimtor/action-zip@v1
         with:
           files: getVisitor.py
-          dest: getVisitor.zip
+          dest: artifact/getVisitor.zip
       - run: realpath getVisitor.zip
       - run: ls -laR .
   deploy:
@@ -25,6 +33,10 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
+      - uses: actions/download-artifact@master
+        with:
+          name: python-artifact
+          path: artifact/getVisitor.zip
       - run: realpath template.yaml
       - run: realpath getVisitor.zip
       - run: pwd
