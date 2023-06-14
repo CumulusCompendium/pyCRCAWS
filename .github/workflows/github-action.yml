@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - testing
+      - develop
 jobs:
   python_zip:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
           dest: getVisitor.zip
       - run: realpath getVisitor.zip
   deploy:
-    needs: python_test
+    needs: python_zip
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
